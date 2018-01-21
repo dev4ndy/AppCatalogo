@@ -1,0 +1,54 @@
+page-recuperar-contrasena {
+  background: transparent !important;
+  ion-img, ion-input, ion-item {
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+  .color-white {
+    color: #ffffff;
+  }
+
+  .button-recuperar {
+    width: 70% !important;
+  }
+
+  .bar-button,
+  .toolbar-title {
+    color: #fff;
+  }
+
+  button {
+    margin-right: 0px !important;
+  }
+
+  .padding-LR-15 {
+    padding-right: 15% !important;
+    padding-left: 15% !important;
+  }
+  @media screen and (orientation: landscape) {
+    ion-content {
+      background-image: url('../assets/imgs/carretera_dia_recuperar.png');
+      width: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+  }
+  @media screen and (orientation: portrait) {
+    ion-content {
+      background-image: url('../assets/imgs/carretera_dia_recuperar.png');
+      width: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .padding-top-20 {
+      padding-top: 20%;
+    }
+    .padding-top-20 {
+      padding-top: 20%;
+    }
+  }
+}

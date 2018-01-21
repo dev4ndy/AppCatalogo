@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-toolbar no-border-top>
+      <ion-buttons end>
+        <button ion-button clear icon-end outline color="primary" (click)="infoVehiculo()">
+          <ion-icon name="ios-help-circle-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Veh&iacute;culo</ion-title>
+    </ion-toolbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <select-searchable
+        [(ngModel)]="port4"
+        title="Buscar vehículo"
+        itemValueField="id"
+        itemTextField="name"
+        [items]="ports"
+        [canSearch]="true"
+        searchPlaceholder="Ingrese más de 3 caracteres de la marca o serie"
+        (onSearch)="searchPorts($event)"
+        (onChange)="portChange($event)">
+      </select-searchable>
+    </ion-item>
+  </ion-list>
+
+
+  <button ion-button (click)="getVehiculos()">Default</button>
+
+  <h2>Welcome to Ionic!</h2>
+  <p>
+    This starter project comes with simple tabs-based layout for apps
+    that are going to primarily use a Tabbed UI.
+  </p>
+  <p>
+    Take a look at the <code>src/pages/</code> directory to add or change tabs,
+    update any existing page or create new pages.
+  </p>
+</ion-content>

@@ -1,0 +1,92 @@
+page-login {
+
+  background: transparent !important;
+  ion-img, ion-input, ion-item {
+    background: transparent !important;
+  }
+
+  .color-white {
+    color: #ffffff;
+  }
+
+  button {
+    margin-right: 0px !important;
+  }
+
+  .btn-eye {
+    background: transparent !important;
+  }
+
+  .padding-LR-15 {
+    padding-right: 15% !important;
+    padding-left: 15% !important;
+  }
+
+  .button-login {
+    width: 70% !important;
+  }
+
+  /* ion-img {
+     width: 140px;
+     height: 128px;
+   }*/
+
+  @media screen and (orientation: landscape) {
+    ion-content {
+      background-image: url('../assets/imgs/carretera_login.png');
+      width: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .padding-top-login {
+      padding-top: 3%;
+    }
+
+    .padding-image {
+      padding-top: 5px;
+    }
+
+    .landscape-image {
+      background-image: url('../assets/imgs/logo_negro.png');
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 128px;
+      background-size: 140px 128px;
+      text-align: center;
+      background-position: center center;
+    }
+
+  }
+  @media screen and (orientation: portrait) {
+    ion-content {
+      background-image: url('../assets/imgs/carretera_login.png');
+      width: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+    }
+
+    .padding-top-login {
+      padding-top: 25%;
+    }
+
+    .padding-image {
+      padding-top: 105px;
+    }
+
+    .landscape-image {
+      margin-top: 115px;
+      background-image: url('../assets/imgs/logo_blanco.png');
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 128px;
+      background-size: 140px 128px;
+      text-align: center;
+      background-position: center center;
+    }
+
+  }
+}

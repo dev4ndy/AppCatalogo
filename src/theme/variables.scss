@@ -37,9 +37,16 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
+  light:      #ffffff,
   dark:       #222
 );
+
+$text-input-placeholder-color : #ffffff;
+
+.error-message{
+  color: red;
+  padding-top: 3px;
+}
 
 
 // App iOS Variables
