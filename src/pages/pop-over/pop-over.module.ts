@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { RegistroPage } from './registro';
+import { PopOverPage } from './pop-over';
 
 @NgModule({
   declarations: [
-    //RegistroPage,
+    //PopOverPage,
   ],
   imports: [
-    IonicPageModule.forChild(RegistroPage),
+    IonicPageModule.forChild(PopOverPage),
   ],
 })
-export class RegistroPageModule {}
+export class PopOverPageModule {}

@@ -5,6 +5,7 @@ import {RecuperarContrasenaPage} from "../recuperar-contrasena/recuperar-contras
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import {RemoteServiceProvider} from "../../providers/remote-service/remote-service";
 import {TabsPage} from "../tabs/tabs";
+import {Storage} from '@ionic/storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -34,17 +35,18 @@ export class LoginPage {
       {type: 'required', message: 'El usuario es requerido.'},
     ],
     'contrasena': [
-      {type: 'required', message: 'La contrasena es requerida'}
+      {type: 'required', message: 'La contraseña es requerida'}
     ]
   };
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public plt: Platform,
               private formBuilder: FormBuilder, private service: RemoteServiceProvider,
-              private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+              private loadingCtrl: LoadingController, private alertCtrl: AlertController,
+              private storange: Storage) {
     this.formLogin = formBuilder.group({
-      userName: ['dev4ndy', Validators.compose([Validators.required])],
-      contrasena: ['1234', Validators.compose([Validators.required])]
+      userName: ['', Validators.compose([Validators.required])],
+      contrasena: ['', Validators.compose([Validators.required])]
 
 
     });
@@ -65,13 +67,11 @@ export class LoginPage {
     }
   }
 
-  openTabsPage(){
+  openTabsPage() {
     this.navCtrl.push(TabsPage)
   }
 
   iniciarSesion(data) {
-    console.log(data);
-    console.log("Inicio de sesion");
     let loading = this.loadingCtrl.create({
       content: 'Por favor espera...'
     });
@@ -80,6 +80,8 @@ export class LoginPage {
     this.service.iniciarSesion(data).subscribe(
       data => {
         if (!data.error) {
+          console.log(data.data);
+          this.storange.set('KEY_APP', data.data);
           loading.dismiss();
           this.openTabsPage();
         } else {
@@ -94,8 +96,8 @@ export class LoginPage {
         }
       },
       error => {
-        console.log(error.toString());
-        console.log("Error occured: " + error);
+        (error.toString());
+        ("Error occured: " + error);
       });
   }
 }

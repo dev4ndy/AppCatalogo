@@ -1,7 +1,7 @@
 <ion-header color="brakepak">
   <ion-navbar primary>
     <ion-toolbar no-border-top>
-      <ion-title>Veh&iacute;culo</ion-title>
+      <ion-title>Referencia</ion-title>
       <ion-buttons end>
         <button ion-button icon-only color="light" (click)="openPopOver($event)">
           <ion-icon color="ligth" name="more"></ion-icon>
@@ -10,38 +10,40 @@
     </ion-toolbar>
   </ion-navbar>
 </ion-header>
+
 <ion-content>
   <ion-card class="card">
-    <ion-grid no-padding>
+    <ion-grid>
       <ion-row>
-        <ion-col col-12 no-padding>
+        <ion-col col-12>
           <ion-item>
             <select-searchable
-              [(ngModel)]="vehiculo"
-              title="Buscar vehículo"
-              itemValueField="serieId"
+              [(ngModel)]="referencia"
+              title="B&uacute;squeda por referencia"
+              itemValueField="id"
               itemTextField="nombre"
-              [items]="vehiculos"
+              [items]="referencias"
               [canSearch]="true"
-              searchPlaceholder="Ingrese más de 3 caracteres de la marca o serie"
-              (onSearch)="searchVehiculo($event)"
-              (onChange)="vehiculoChange($event)">
+              searchPlaceholder="Ingrese más de 3 caracteres"
+              (onSearch)="searchReferencia($event)"
+              (onChange)="referenciaChange($event)">
             </select-searchable>
           </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
+
   <ion-list no-lines>
     <ion-grid>
       <ion-row>
         <ion-col col-xl-4 col-lg-6 col-md-12 *ngFor="let producto of productos">
-          <ion-item text-wrap>
+          <ion-item text-warp>
             <ion-thumbnail item-start>
-              <img src="{{urlImagen}}{{producto.imagen}}" (error)="checkImage($event)"/>
+              <img src="{{urlImagen}}{{producto.imagen}}" item-start>
             </ion-thumbnail>
             <h2>{{producto.referencia}} {{producto.fmsi}}</h2>
-            <p>{{producto.subgrupo}}</p>
+            <p>{{producto.marca}}</p>
             <button ion-button clear item-end large (click)="infoModal(producto)">
               <ion-icon color="ligth" name="more"></ion-icon>
             </button>

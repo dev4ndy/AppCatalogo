@@ -1,26 +1,22 @@
-page-home {
+page-referencia {
   img {
     width: 80px;
     height: 100% !important;
-  }
-  .fontSize9 {
-    font-size: .9rem;
   }
   .card {
     margin: 0px !important;
     width: 100% !important;
   }
- /* ion-grid {
+  ion-grid {
     padding: 0px !important;
   }
   ion-col {
     padding: 0px !important;
-  }*/
+  }
   .fixed-header {
     width: 100%;
     position: fixed;
     text-align: center;
     padding: 0px;
   }
-
 }

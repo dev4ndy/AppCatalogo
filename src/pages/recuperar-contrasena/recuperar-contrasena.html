@@ -17,14 +17,25 @@
     <ion-img width="150" height="137" src="assets/imgs/logo_blanco.png"></ion-img>
   </div>
   <div class="padding-top-20"></div>
-  <ion-item class="padding-LR-15">
-    <ion-label>
-      <ion-icon name="ios-mail-outline"></ion-icon>
-    </ion-label>
-    <ion-input type="email" placeholder="Ingresar Email"></ion-input>
-  </ion-item>
-  <div padding-top></div>
-  <div text-center>
-    <button ion-button text-center color="secondary" class="button-recuperar">Recuperar Contraseña</button>
-  </div>
+  <form [formGroup]="formRecuperar" (ngSubmit)="recuperar(formRecuperar.value)">
+    <ion-item class="padding-LR-15">
+      <ion-label>
+        <ion-icon name="ios-mail-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="email" formControlName="email" placeholder="Ingresar Email"></ion-input>
+    </ion-item>
+    <div class="validation-errors padding-LR-15">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message"
+             *ngIf="formRecuperar.get('email').hasError(validation.type) && (formRecuperar.get('email').dirty || formRecuperar.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <div padding-top></div>
+    <div text-center>
+      <button ion-button text-center color="secondary" type="submit" class="button-recuperar" [disabled]="!formRecuperar.valid">Recuperar Contraseña
+      </button>
+    </div>
+  </form>
 </ion-content>

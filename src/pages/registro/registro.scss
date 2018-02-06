@@ -1,4 +1,17 @@
 page-registro {
+
+  .text-input::-moz-placeholder {
+    color: white;
+  }
+
+  .text-input:-ms-input-placeholder {
+    color: white;
+  }
+
+  .text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: white;
+  }
   background: transparent !important;
   ion-img, ion-input, ion-item {
     background: transparent !important;
@@ -27,7 +40,7 @@ page-registro {
   }
   @media screen and (orientation: landscape) {
     ion-content {
-      background-image: url('../assets/imgs/carretera_noche_registro.png');
+      background-image: url('../assets/imgs/carretera_registro.png');
       width: 100%;
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -37,7 +50,7 @@ page-registro {
   }
   @media screen and (orientation: portrait) {
     ion-content {
-      background-image: url('../assets/imgs/carretera_noche_registro.png');
+      background-image: url('../assets/imgs/carretera_registro.png');
       width: 100%;
       background-size: 100% 100%;
       background-repeat: no-repeat;

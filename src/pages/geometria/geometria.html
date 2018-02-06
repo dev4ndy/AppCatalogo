@@ -1,7 +1,9 @@
-<ion-header color="brakepak">
-  <ion-navbar primary>
-    <ion-toolbar no-border-top>
-      <ion-title>Veh&iacute;culo</ion-title>
+<ion-header>
+  <ion-navbar>
+    <ion-toolbar>
+      <ion-title>
+        Geometria
+      </ion-title>
       <ion-buttons end>
         <button ion-button icon-only color="light" (click)="openPopOver($event)">
           <ion-icon color="ligth" name="more"></ion-icon>
@@ -12,22 +14,22 @@
 </ion-header>
 <ion-content>
   <ion-card class="card">
-    <ion-grid no-padding>
+    <ion-grid>
       <ion-row>
-        <ion-col col-12 no-padding>
+        <ion-col col-10>
           <ion-item>
-            <select-searchable
-              [(ngModel)]="vehiculo"
-              title="Buscar vehículo"
-              itemValueField="serieId"
-              itemTextField="nombre"
-              [items]="vehiculos"
-              [canSearch]="true"
-              searchPlaceholder="Ingrese más de 3 caracteres de la marca o serie"
-              (onSearch)="searchVehiculo($event)"
-              (onChange)="vehiculoChange($event)">
-            </select-searchable>
+            <ion-label>Categor&iacute;a</ion-label>
+            <ion-select [(ngModel)]="subgrupoId" interface="popover">
+              <ion-option class="option" *ngFor="let subgrupo of lsSubgrupo" value="{{subgrupo.id}}">{{subgrupo.nombre |
+                lowercase | capitalize:true}}
+              </ion-option>
+            </ion-select>
           </ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button clear (click)="openPopOverFiltro($event)">
+            <ion-icon name="ios-funnel"></ion-icon>
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -41,7 +43,7 @@
               <img src="{{urlImagen}}{{producto.imagen}}" (error)="checkImage($event)"/>
             </ion-thumbnail>
             <h2>{{producto.referencia}} {{producto.fmsi}}</h2>
-            <p>{{producto.subgrupo}}</p>
+            <p></p>
             <button ion-button clear item-end large (click)="infoModal(producto)">
               <ion-icon color="ligth" name="more"></ion-icon>
             </button>

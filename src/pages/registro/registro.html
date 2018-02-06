@@ -12,46 +12,88 @@
 </ion-header>
 
 
-<ion-content >
+<ion-content>
   <div text-center class="padding-image">
     <ion-img width="150" height="137" src="assets/imgs/logo_blanco.png"></ion-img>
   </div>
   <div class="padding-top-registro"></div>
-  <ion-item class="padding-LR-15">
-    <ion-label>
-      <ion-icon name="ios-person-outline"></ion-icon>
-    </ion-label>
-    <ion-input type="text" placeholder="Ingresar Nombre"></ion-input>
-  </ion-item>
-  <ion-item class="padding-LR-15">
-    <ion-label>
-      <ion-icon name="ios-person-outline"></ion-icon>
-    </ion-label>
-    <ion-input type="text" placeholder="Ingresar Apellido"></ion-input>
-  </ion-item>
-  <ion-item class="padding-LR-15">
-    <ion-label>
-      <ion-icon name="ios-briefcase-outline"></ion-icon>
-    </ion-label>
-    <ion-input type="text" placeholder="Ingresar Empresa"></ion-input>
-  </ion-item>
-  <ion-item class="padding-LR-15">
-    <ion-label>
-      <ion-icon name="ios-mail-outline"></ion-icon>
-    </ion-label>
-    <ion-input type="email" placeholder="Ingresar Email"></ion-input>
-  </ion-item>
-  <ion-item class="padding-LR-15">
-    <ion-label>
-      <ion-icon name="ios-lock-outline" class="color-white"></ion-icon>
-    </ion-label>
-    <ion-input type="{{type}}" placeholder="Contraseña" class="color-white"></ion-input>
-    <button ion-button clear outline (click)="showPassword()" item-right>
-      <ion-icon name="{{iconEye}}" class="color-white"></ion-icon>
-    </button>
-  </ion-item>
-  <div padding-top></div>
-  <div text-center>
-    <button ion-button text-center color="secondary" class="button-registro">Reg&iacute;strate</button>
-  </div>
+  <form [formGroup]="formRegistro" (ngSubmit)="registrar(formRegistro.value)">
+    <ion-item class="padding-LR-15">
+      <ion-label>
+        <ion-icon name="ios-person-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="text" formControlName="primerNombre" placeholder="Ingresar Nombre"></ion-input>
+    </ion-item>
+    <div class="validation-errors padding-LR-15">
+      <ng-container *ngFor="let validation of validation_messages.primerNombre">
+        <div class="error-message"
+             *ngIf="formRegistro.get('primerNombre').hasError(validation.type) && (formRegistro.get('primerNombre').dirty || formRegistro.get('primerNombre').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item class="padding-LR-15">
+      <ion-label>
+        <ion-icon name="ios-person-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="text" formControlName="primerApellido" placeholder="Ingresar Apellido"></ion-input>
+    </ion-item>
+    <div class="validation-errors padding-LR-15">
+      <ng-container *ngFor="let validation of validation_messages.primerApellido">
+        <div class="error-message"
+             *ngIf="formRegistro.get('primerApellido').hasError(validation.type) && (formRegistro.get('primerApellido').dirty || formRegistro.get('primerApellido').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item class="padding-LR-15">
+      <ion-label>
+        <ion-icon name="ios-briefcase-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="text" formControlName="empresa" placeholder="Ingresar Empresa"></ion-input>
+    </ion-item>
+    <div class="validation-errors padding-LR-15">
+      <ng-container *ngFor="let validation of validation_messages.empresa">
+        <div class="error-message"
+             *ngIf="formRegistro.get('empresa').hasError(validation.type) && (formRegistro.get('empresa').dirty || formRegistro.get('empresa').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item class="padding-LR-15">
+      <ion-label>
+        <ion-icon name="ios-mail-outline"></ion-icon>
+      </ion-label>
+      <ion-input type="email" formControlName="email" placeholder="Ingresar Email"></ion-input>
+    </ion-item>
+    <div class="validation-errors padding-LR-15">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message"
+             *ngIf="formRegistro.get('email').hasError(validation.type) && (formRegistro.get('email').dirty || formRegistro.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item class="padding-LR-15">
+      <ion-label>
+        <ion-icon name="ios-lock-outline" class="color-white"></ion-icon>
+      </ion-label>
+      <ion-input type="{{type}}" formControlName="contrasena" placeholder="Contraseña" class="color-white"></ion-input>
+      <button ion-button clear outline (click)="showPassword()" item-right>
+        <ion-icon name="{{iconEye}}" class="color-white"></ion-icon>
+      </button>
+    </ion-item>
+    <div class="validation-errors padding-LR-15">
+      <ng-container *ngFor="let validation of validation_messages.contrasena">
+        <div class="error-message"
+             *ngIf="formRegistro.get('contrasena').hasError(validation.type) && (formRegistro.get('contrasena').dirty || formRegistro.get('contrasena').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <div padding-top></div>
+    <div text-center>
+      <button ion-button text-center color="secondary" type="submit" class="button-registro" [disabled]="!formRegistro.valid">Reg&iacute;strate</button>
+    </div>
+  </form>
 </ion-content>

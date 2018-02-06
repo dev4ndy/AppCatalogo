@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Detalles
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cerrar</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="{{urlImagen}}{{producto.imagen}}" (error)="checkImage($event)"/>
+    <ion-card-header>
+      {{option}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-segment [(ngModel)]="option" color="dark">
+        <ion-segment-button value="Aplicaciones">
+          <ion-icon name="car"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button *ngIf="blMedida" value="Medidas">
+          <ion-icon name="resize"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+      <ion-list style="margin: 0" *ngIf="option === 'Aplicaciones'">
+
+        <ion-item-group *ngFor="let producto of getItems(option)">
+          <ion-item-divider>{{producto.marca}}</ion-item-divider>
+          <ion-item class="fontSize9" *ngFor="let serie of producto.serie">{{serie.nombre}} - (Pos.:
+            {{serie.posicion}})
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+      <ion-list *ngIf="option === 'Medidas'" no-lines>
+        <button ion-item *ngFor="let medida of getItems(option)" (click)="itemSelected(item)">
+          <strong>{{medida.label | capitalize}}</strong>: {{medida.valor}}
+        </button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

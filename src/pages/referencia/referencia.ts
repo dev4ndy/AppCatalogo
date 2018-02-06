@@ -1,106 +1,87 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {LoadingController} from 'ionic-angular';
-import {SelectSearchable} from '../../components/select-searchable/select-searchable';
-import {RemoteServiceProvider} from "../../providers/remote-service/remote-service";
-import {ModalController, PopoverController} from 'ionic-angular';
+import {NavController, ModalController, AlertController, LoadingController, PopoverController} from 'ionic-angular';
 import {CONST} from "../../providers/constantes";
-import {PopOverPage} from "../pop-over/pop-over";
+import {RemoteServiceProvider} from "../../providers/remote-service/remote-service";
+import {SelectSearchable} from "../../components/select-searchable/select-searchable";
 import {ModalPage} from "../modal-producto/modal";
+import {PopOverPage} from "../pop-over/pop-over";
 
-
-
-class Vehiculo {
-  public serieId: number;
-  public nombre: string;
-  public marcaId: number;
-}
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'vehiculo.html'
+  selector: 'page-referencia',
+  templateUrl: 'referencia.html'
 })
-export class VehiculoPage {
+export class ReferenciaPage {
 
-  private maxResult = 10;
   private urlImagen;
-  private vehiculos: Vehiculo[];
+  private referencias;
+  private vehiculo;
   private productos = [];
+  private time;
   private filtro;
   private blScroll = true;
-  private time: Date;
+  private maxResult = 10;
 
   constructor(public navCtrl: NavController, private service: RemoteServiceProvider,
               private loadingCtrl: LoadingController, private modalCtrl: ModalController, private popOverCtrl: PopoverController) {
     this.urlImagen = CONST.URL_IMAGE;
-    console.log('vehiculo.ts');
   }
-  ionViewDidLoad() {
-  }
-
-
-  checkImage(event) {
-    event.target.setAttribute('src', 'assets/imgs/Imagen_no_disponible.png');
-  }
-
 
   openPopOver(ev: UIEvent) {
-    let popover = this.popOverCtrl.create(PopOverPage, {mensaje: 'Haga click sobre "Buscar vehículo", luego ingrese la marca (ej. Mazda) o la serie (ej. CX-5)'});
+    let popover = this.popOverCtrl.create(PopOverPage, {mensaje: 'Haga click sobre "Buscar por referencia", luego ingrese la referencia'});
+
     popover.present({
       ev: ev
     });
+
   }
 
-  searchVehiculo(event: { component: SelectSearchable, text: string }) {
+  searchReferencia(event: { component: SelectSearchable, text: string }) {
     let text = (event.text || '').trim().toLowerCase();
 
     if (!text) {
       event.component.items = [];
       return;
     } else if (event.text.length < 3) {
-      this.time = new Date();
       return;
     }
+
     event.component.isSearching = true;
-    this.service.getVehiculo(text).subscribe(
+    this.service.getReferencia(text).subscribe(
       data => {
         if (data['data'].length === 0 || !data['data']) {
-          this.vehiculos = [];
+          this.referencias = [];
           event.component.items = [];
         } else {
-          this.vehiculos = data['data'];
+          this.referencias = data['data'];
           event.component.items = data['data'];
         }
         event.component.isSearching = false;
       },
       error => {
-        console
-          .log(error);
-      });
+      }
+    );
   }
 
-  vehiculoChange(event: { component: SelectSearchable, value: any }) {
+  referenciaChange(event: { component: SelectSearchable, value: any }) {
+    this.productos = []
     let loading = this.loadingCtrl.create({
       content: 'Cargando...'
     });
     loading.present();
     let data = event.value;
-    console.log(data)
-    data = {
-      serieId: data.serieId,
-      marcaId: data.marcaId,
-      subgrupoId: '',
-      inicio: 0
-    };
+    data.inicio = 0;
     this.filtro = data;
-    this.service.getProductosByMarcaAndSerie(data).subscribe(
+    this.service.getProductosByReferencia(data).subscribe(
       data => {
-        console.log(data);
         if (data['data'].length === 0 || !data['data']) {
           this.blScroll = false;
         } else {
           this.blScroll = true;
-          this.productos = data['data'];
+          let keys = Object.keys(data['data']);
+          keys.map(key => {
+            this.productos.push(data['data'][key][0]);
+          });
         }
         loading.dismiss();
       },
@@ -119,16 +100,17 @@ export class VehiculoPage {
 
   doInfinite(infiniteScroll) {
     this.filtro.inicio = Number(this.filtro.inicio) + this.maxResult + 1;
-    this.service.getProductosByMarcaAndSerie(this.filtro).subscribe(
+    this.service.getProductosByReferencia(this.filtro).subscribe(
       data => {
         if (data['data'].length === 0 || !data['data']) {
           this.blScroll = false;
         } else {
-          for (let producto of data['data']) {
-            this.productos.push(producto);
-          }
+          this.blScroll = true;
+          let keys = Object.keys(data['data']);
+          keys.map(key => {
+            this.productos.push(data['data'][key][0]);
+          });
         }
-        infiniteScroll.complete();
       },
       error => {
       });

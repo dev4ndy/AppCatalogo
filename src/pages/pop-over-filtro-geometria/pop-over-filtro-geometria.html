@@ -1,0 +1,460 @@
+<div *ngIf="subgrupoId === 1"> <!-- PASTILLAS DE FRENO -->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Longitud y Ancho</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="longitud" placeholder="Longitud"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="espesor" placeholder="Ancho"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'longitud')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Longitud</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" name="longitud" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" name="longitud" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+<div *ngIf="subgrupoId === 4"> <!-- PISTON DE MORDAZA -->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Diametro y Altura</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametroExt" placeholder="Diametro"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="altura" placeholder="Altura"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'diametroExt')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Diametro</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+<div
+  *ngIf="subgrupoId === 5 || subgrupoId === 13 || subgrupoId === 14 || subgrupoId === 15 || subgrupoId === 18
+  || subgrupoId === 19 || subgrupoId === 20 || subgrupoId === 21 || subgrupoId === 22 || subgrupoId === 27">
+  <!-- KIT LIGAS KALIPER, CILINDROS MAESTROS DE FRENO, EMPAQUETADURA CILINDROS MAESTROS DE FRENO, CILINDROS DE RUEDA, CILINDRO MAESTRO EMBRAGUE, EMPAQUETADURA CILINDRO MAESTRO EMBRAGUE,
+   CILINDRO AUXILIAR DE EMBRAGUE, EMPAQUETADURA CILINDRO AUXILIAR DE EMBRAGUE, SERVO FRENO ( BOOSTER)-->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Diametro</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametro" placeholder="Diametro"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'diametro')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Diametro</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+<div *ngIf="subgrupoId === 6"> <!-- ZAPATAS DE FRENO -->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Geometria</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametroInt"
+                         placeholder="Diametro interno"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="espesor"
+                         placeholder="espesor"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="altura"
+                         placeholder="altura"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'diametroInt')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Diametro</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+<div *ngIf="subgrupoId === 12"> <!-- KIT PUNTILLAS  DE FRENO -->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Longitud</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="longitud"
+                         placeholder="Longitud"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'longitud')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Longitud</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+<div *ngIf="subgrupoId === 24"> <!-- DISCOS DE FRENO -->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Geometria</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametroExt"
+                         placeholder="Diametro Externo"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametroIntBocin"
+                         placeholder="Diametro Int. Bocin"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="espesor"
+                         placeholder="Espesor"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="altura"
+                         placeholder="Altura"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="1" formControlName="agujeros"
+                         placeholder="Agujeros"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-select formControlName="tipo" placeholder="Tipo" interface="popover">
+                <ion-option class="option" value="1">
+                  Solido
+                </ion-option>
+                <ion-option class="option" value="2">
+                  Ventilado
+                </ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'diametroExt')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Longitud</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+<div *ngIf="subgrupoId === 25"> <!-- TAMBOR DE FRENO -->
+  <form [formGroup]="formFiltro" (ngSubmit)="filtroGeometria(formFiltro.value)">
+    <ion-item-group no-padding>
+      <ion-item-divider color="light">Geometria</ion-item-divider>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametroIntBocin"
+                         placeholder="Diametro Int. Bocin"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="diametro"
+                         placeholder="Diametro"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="espesor"
+                         placeholder="Espesor"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="1" formControlName="agujeros"
+                         placeholder="Agujeros"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="altura"
+                         placeholder="Altura"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+
+  <form [formGroup]="formRango" (ngSubmit)="filtroRango(formRango.value, 'diametroExt')">
+    <ion-item-group>
+      <ion-item-divider color="light">Rango - Longitud</ion-item-divider>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="min" placeholder="Min" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-input type="number" step="0.1" formControlName="max" placeholder="Max" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <button ion-button full type="submit">Aplicar</button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </form>
+</div>
+
+

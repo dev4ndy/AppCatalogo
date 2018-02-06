@@ -3,13 +3,16 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
-import {AboutPage} from '../pages/about/about';
-import {ContactPage} from '../pages/contact/contact';
+
+import {ReferenciaPage} from "../pages/referencia/referencia";
+import {GeometriaPage} from '../pages/geometria/geometria';
 import {VehiculoPage} from '../pages/vehiculo/vehiculo';
 import {TabsPage} from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {RegistroPage} from "../pages/registro/registro";
 import {RecuperarContrasenaPage} from "../pages/recuperar-contrasena/recuperar-contrasena";
+import {ModalPage} from "../pages/modal-producto/modal";
+import {PopOverPage} from "../pages/pop-over/pop-over";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -18,36 +21,48 @@ import {HttpClientModule} from '@angular/common/http';
 import {RemoteServiceProvider} from '../providers/remote-service/remote-service';
 import {ScreenOrientation} from "@ionic-native/screen-orientation";
 import { Keyboard } from '@ionic-native/keyboard';
+import { IonicStorageModule } from '@ionic/storage';
+import {CapitalizePipe} from "../providers/capitalize";
+import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop-over-filtro-geometria";
+
 
 
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    ReferenciaPage,
+    CapitalizePipe,
+    GeometriaPage,
     VehiculoPage,
     TabsPage,
     LoginPage,
     RegistroPage,
-    RecuperarContrasenaPage
+    RecuperarContrasenaPage,
+    ModalPage,
+    PopOverPage,
+    PopOverFiltroGeometriaPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {scrollAssist: false, autoFocusAssist: false}),
     SelectSearchableModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    ReferenciaPage,
+    GeometriaPage,
     VehiculoPage,
     TabsPage,
     LoginPage,
     RegistroPage,
-    RecuperarContrasenaPage
+    RecuperarContrasenaPage,
+    ModalPage,
+    PopOverPage,
+    PopOverFiltroGeometriaPage
   ],
   providers: [
     StatusBar,
