@@ -32,7 +32,7 @@
         <ion-icon name="ios-lock-outline" class="color-white"></ion-icon>
       </ion-label>
       <ion-input formControlName="contrasena" type="{{type}}" placeholder="Contraseña" class="color-white"></ion-input>
-        <button type="button" class="btn-eye" clear outline (click)="showPassword()" item-right>
+      <button type="button" class="btn-eye" clear outline (click)="showPassword()" item-right>
         <ion-icon name="{{iconEye}}" class="color-white"></ion-icon>
       </button>
     </ion-item>
@@ -44,9 +44,15 @@
         </div>
       </ng-container>
     </div>
+    <ion-item class="padding-LR-15">
+      <ion-label class="color-white">Inicio de sesión autmatico.</ion-label>
+      <ion-checkbox formControlName="loginAuto" ></ion-checkbox>
+    </ion-item>
+
     <div padding-top></div>
     <div text-center>
-      <button ion-button text-center type="submit" class="button-login" type="submit" [disabled]="!formLogin.valid" >Iniciar
+      <button ion-button text-center type="submit" class="button-login" type="submit" [disabled]="!formLogin.valid">
+        Iniciar
         Sesi&oacute;n
       </button>
     </div>
