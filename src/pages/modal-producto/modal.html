@@ -32,7 +32,7 @@
         <ion-item-group *ngFor="let producto of getItems(option)">
           <ion-item-divider>{{producto.marca}}</ion-item-divider>
           <ion-item class="fontSize9" *ngFor="let serie of producto.serie">{{serie.nombre}} - (Pos.:
-            {{serie.posicion}})
+            {{serie.posicion}} / Modelo: {{serie.modelo}})
           </ion-item>
         </ion-item-group>
       </ion-list>

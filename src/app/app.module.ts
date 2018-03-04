@@ -20,12 +20,10 @@ import {SelectSearchableModule} from '../components/select-searchable/select-sea
 import {HttpClientModule} from '@angular/common/http';
 import {RemoteServiceProvider} from '../providers/remote-service/remote-service';
 import {ScreenOrientation} from "@ionic-native/screen-orientation";
-import { Keyboard } from '@ionic-native/keyboard';
-import { IonicStorageModule } from '@ionic/storage';
+import {Keyboard} from '@ionic-native/keyboard';
+import {IonicStorageModule} from '@ionic/storage';
 import {CapitalizePipe} from "../providers/capitalize";
 import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop-over-filtro-geometria";
-
-
 
 
 @NgModule({
@@ -39,6 +37,7 @@ import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop
     LoginPage,
     RegistroPage,
     RecuperarContrasenaPage,
+    ModalPage,
     ModalPage,
     PopOverPage,
     PopOverFiltroGeometriaPage
@@ -74,4 +73,5 @@ import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop
   ]
 })
 export class AppModule {
+
 }
