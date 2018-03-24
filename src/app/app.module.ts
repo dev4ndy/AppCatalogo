@@ -24,6 +24,7 @@ import {Keyboard} from '@ionic-native/keyboard';
 import {IonicStorageModule} from '@ionic/storage';
 import {CapitalizePipe} from "../providers/capitalize";
 import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop-over-filtro-geometria";
+import {PopOverFiltroVehiculoPage} from "../pages/pop-over-filtro-vehiculo/pop-over-filtro-vehiculo";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop
     ModalPage,
     ModalPage,
     PopOverPage,
-    PopOverFiltroGeometriaPage
+    PopOverFiltroGeometriaPage,
+    PopOverFiltroVehiculoPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import {PopOverFiltroGeometriaPage} from "../pages/pop-over-filtro-geometria/pop
     RecuperarContrasenaPage,
     ModalPage,
     PopOverPage,
-    PopOverFiltroGeometriaPage
+    PopOverFiltroGeometriaPage,
+    PopOverFiltroVehiculoPage
   ],
   providers: [
     StatusBar,

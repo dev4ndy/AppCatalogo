@@ -1,0 +1,26 @@
+<form [formGroup]="formFiltro" (ngSubmit)="filtroVehiculo(formFiltro.value)">
+  <ion-item-group no-padding>
+    <ion-item-divider color="light">Categoria</ion-item-divider>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>Categor&iacute;a</ion-label>
+            <ion-select formControlName="subgrupoId" interface="popover">
+              <ion-option class="option" *ngFor="let subgrupo of lsSubgrupo" value="{{subgrupo.id}}">{{subgrupo.nombre |
+                lowercase | capitalize:true}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <button ion-button full type="submit">Aplicar</button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item-group>
+</form>

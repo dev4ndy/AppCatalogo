@@ -7,7 +7,7 @@ import {ModalController, PopoverController} from 'ionic-angular';
 import {CONST} from "../../providers/constantes";
 import {PopOverPage} from "../pop-over/pop-over";
 import {ModalPage} from "../modal-producto/modal";
-
+import {PopOverFiltroVehiculoPage} from "../pop-over-filtro-vehiculo/pop-over-filtro-vehiculo";
 
 
 class Vehiculo {
@@ -29,12 +29,16 @@ export class VehiculoPage {
   private filtro;
   private blScroll = true;
   private time: Date;
+  private marcaId = "";
+  private serieId = "";
+  private subgrupoId = "";
 
   constructor(public navCtrl: NavController, private service: RemoteServiceProvider,
               private loadingCtrl: LoadingController, private modalCtrl: ModalController, private popOverCtrl: PopoverController) {
     this.urlImagen = CONST.URL_IMAGE;
     console.log('vehiculo.ts');
   }
+
   ionViewDidLoad() {
   }
 
@@ -49,6 +53,23 @@ export class VehiculoPage {
     popover.present({
       ev: ev
     });
+  }
+
+  openPopOverFiltro(ev: UIEvent) {
+    let popover = this.popOverCtrl.create(PopOverFiltroVehiculoPage, {marcaId: this.marcaId, serieId: this.serieId});
+
+    popover.present({
+      ev: ev
+    });
+
+    popover.onDidDismiss(data => {
+      if (data !== null) {
+        this.productos = data.data;
+        this.filtro = data.filtro;
+        this.blScroll = true;
+      }
+    });
+
   }
 
   searchVehiculo(event: { component: SelectSearchable, text: string }) {
@@ -85,7 +106,8 @@ export class VehiculoPage {
     });
     loading.present();
     let data = event.value;
-    console.log(data)
+    this.marcaId = data.marcaId;
+    this.serieId = data.serieId;
     data = {
       serieId: data.serieId,
       marcaId: data.marcaId,
